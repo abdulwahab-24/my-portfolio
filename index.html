@@ -7,9 +7,10 @@
 </head>
 <body>
 
-  <!-- Üst menü: Sayfa bölümlerine hızlı erişim -->
+  <!-- ÜST MENÜ (SABİT NAVBAR) -->
   <header class="main-nav">
     <nav class="nav-inner">
+      <!-- Aynı sayfa içindeki bölümlere kaydırma linkleri -->
       <a href="#home">HOME</a>
       <a href="#about">ABOUT ME</a>
       <a href="#projects">MY PROJECTS</a>
@@ -17,34 +18,36 @@
     </nav>
   </header>
 
-  <!-- Üst kısım: Arka planda deniz fotoğrafı, önde isim ve unvan -->
-  <header class="hero" id="home">
+  <!-- HERO BÖLÜMÜ (ARKA PLAN + İSİM + MESLEK) -->
+  <section class="hero" id="home">
+    <!-- Arka planı koyulaştırmak için overlay -->
     <div class="hero-overlay"></div>
+
+    <!-- Hero içeriği -->
     <div class="hero-content">
       <h1>ABDULWAHAB</h1>
-      <p><span>Graphic</span> &amp; <span>Brand Designer</span></p>
+      <p><span>Graphic</span> & <span>Brand Designer</span></p>
     </div>
-  </header>
+  </section>
 
-  <!-- Yetenek kartları bölümü -->
+  <!-- YETENEK KARTLARI (RATING ALANI) -->
   <section class="skills-section" id="skills">
     <div class="skills-wrapper">
 
-      <!-- Fotoğrafçılık 60% -->
-      <article class="skill-card">
+      <!-- FOTOĞRAFÇILIK -->
+      <article class="skill-card fade-item">
         <div class="skill-icon">
           <img src="images/88255 [Converted] [Recovered]-03.png" alt="Photography" />
         </div>
         <h3>PHOTOGRAPHY</h3>
         <div class="skill-bar">
-          <!-- hedef yüzde data-percent içinde, animasyonla dolacak -->
           <div class="skill-fill" data-percent="60"></div>
         </div>
         <span class="skill-percent">60%</span>
       </article>
 
-      <!-- Lightroom 50% -->
-      <article class="skill-card">
+      <!-- LIGHTROOM -->
+      <article class="skill-card fade-item">
         <div class="skill-icon">
           <img src="images/88255 [Converted] [Recovered]-04.png" alt="Lightroom" />
         </div>
@@ -55,8 +58,8 @@
         <span class="skill-percent">50%</span>
       </article>
 
-      <!-- Photoshop 30% -->
-      <article class="skill-card">
+      <!-- PHOTOSHOP -->
+      <article class="skill-card fade-item">
         <div class="skill-icon">
           <img src="images/88255 [Converted] [Recovered]-07.png" alt="Photoshop" />
         </div>
@@ -67,8 +70,8 @@
         <span class="skill-percent">30%</span>
       </article>
 
-      <!-- Illustrator 70% -->
-      <article class="skill-card">
+      <!-- ILLUSTRATOR -->
+      <article class="skill-card fade-item">
         <div class="skill-icon">
           <img src="images/88255 [Converted] [Recovered]-06.png" alt="Illustrator" />
         </div>
@@ -79,8 +82,8 @@
         <span class="skill-percent">70%</span>
       </article>
 
-      <!-- UI/UX 30% -->
-      <article class="skill-card">
+      <!-- UI/UX -->
+      <article class="skill-card fade-item">
         <div class="skill-icon">
           <img src="images/88255 [Converted] [Recovered]-05.png" alt="UI/UX" />
         </div>
@@ -94,12 +97,57 @@
     </div>
   </section>
 
-  <!-- İleride ABOUT / PROJECTS / CONTACT bölümleri buraya eklenecek -->
-  <section id="about"></section>
-  <section id="projects"></section>
-  <section id="contact"></section>
+  <!-- ABOUT BÖLÜMÜ -->
+  <section id="about" class="about-section">
 
-  <!-- Yüzde animasyonu için JS dosyası -->
+    <!-- Bölüm başlığı -->
+    <h2 class="about-title">ABOUT ME</h2>
+
+    <div class="about-inner">
+
+      <!-- Sol tarafta profil fotoğrafı -->
+      <div class="about-photo">
+        <div class="about-photo-circle"></div>
+        <img src="images/DSC_0272.png" alt="Abdulwahab Photo" />
+      </div>
+
+      <!-- Sağ tarafta metin -->
+      <div class="about-text">
+        <p>
+          My name is Abdulwahab, and I am a photographer and graphic designer with a strong
+          passion for visual storytelling, branding, and creative direction. I specialize in
+          transforming ideas into meaningful visuals.
+        </p>
+
+        <p>
+          I am currently studying at Sakarya University, majoring in Information Systems
+          Engineering. My academic background supports my creative direction with technical
+          and analytical thinking.
+        </p>
+
+        <p>
+          At 23 years old, I continue to develop my skills in photography, graphic design,
+          and digital media, aiming to create unique and professional work.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJE BÖLÜMÜ (Placeholder) -->
+  <section id="projects" class="placeholder-section">
+    <h2>MY PROJECTS</h2>
+    <p>Bu bölüm daha sonra eklenecek.</p>
+  </section>
+
+  <!-- İLETİŞİM BÖLÜMÜ (Placeholder) -->
+  <section id="contact" class="placeholder-section">
+    <h2>CONTACT ME</h2>
+    <p>İletişim bilgileri daha sonra eklenecek.</p>
+  </section>
+
+  <!-- JS Dosyası (Animasyonlar için) -->
   <script src="app.js"></script>
+
 </body>
 </html>

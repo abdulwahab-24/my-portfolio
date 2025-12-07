@@ -1,4 +1,6 @@
-/* Genel sayfa ayarları */
+/* ---------------- GENEL AYARLAR ---------------- */
+
+/* Tüm elemanlarda box-sizing kontrolü ve boşluk sıfırlama */
 *{
   box-sizing: border-box;
   margin: 0;
@@ -7,72 +9,86 @@
 
 body{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: #050608; /* Sayfanın ana zemin rengi (siyah) */
+  background-color: #050608;   /* Sayfanın ana arka plan rengi (siyah) */
   color: #f9fafb;
 }
 
-/* ---------------- ÜST MENÜ ---------------- */
+/* Linklerin varsayılan alt çizgisini kaldır */
+a{
+  text-decoration: none;
+  color: inherit;
+}
 
-/* Üst menünün sayfanın tepesinde ortalanması */
+/* ---------------- ÜST MENÜ (NAVBAR) ---------------- */
+
+/* Navbar'ın arka planı: sayfanın üstünde sabitlenen ince şerit */
 .main-nav{
-  position: absolute;
-  top: 24px;
+  position: fixed;
+  top: 16px;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
-  z-index: 5; /* hero'nun üstünde görünmesi için */
+  z-index: 100;
 }
 
-/* Menünün içindeki beyaz kapsül */
+/* Menü içinde beyaz kapsül görünümü */
 .nav-inner{
   background-color: #ffffff;
+  padding: 10px 40px;
   border-radius: 999px;
-  padding: 10px 50px;
   display: flex;
-  gap: 60px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  gap: 80px;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
 }
 
-/* Menü linkleri */
+/* Menü linklerinin rengi ve hover efekti */
 .nav-inner a{
-  text-decoration: none;
-  color: #222222;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
 }
 
 .nav-inner a:hover{
-  color: #148f77;
+  color: #2563eb;
+}
+
+/* Küçük ekranlarda menüyü daha sıkı göster */
+@media (max-width: 768px){
+  .nav-inner{
+    gap: 24px;
+    padding-inline: 24px;
+    font-size: 0.85rem;
+  }
 }
 
 /* ---------------- HERO BÖLÜMÜ ---------------- */
 
-/* Arka planda deniz fotoğrafı olan bölüm */
+/* Arka planda fotoğraf olan bölüm */
 .hero{
   position: relative;
-  height: 60vh; /* Fotoğraf yüksekliği */
-  background-image: url("images/88255 [Converted].png"); /* Fotoğraf yolu */
-  background-size: cover;      /* Fotoğrafı alanı doldur */
-  background-position: center; /* Ortaya hizala */
+  height: 60vh;
+  background-image: url("images/88255 [Converted].png");
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-/* Fotoğraf üzerine koyu overlay – yazıyı daha okunur yapar */
+/* Fotoğraf üzerine koyu overlay – yazının okunabilirliğini artırır */
 .hero-overlay{
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.55);
 }
 
-/* İsim ve unvan kutusu */
+/* Hero metin kutusu */
 .hero-content{
   position: relative;   /* overlay'in üstünde görünmesi için */
   z-index: 1;
+  margin-top: 40px;     /* Navbar ile çakışmaması için boşluk */
 }
 
 .hero-content h1{
@@ -86,24 +102,33 @@ body{
   font-weight: 500;
 }
 
+/* "Graphic" kelimesi için vurgu rengi */
 .hero-content p span:nth-child(1){
   color: #facc6b;
 }
 
-/* ---------------- YETENEK KARTLARI ---------------- */
-
-/* Yetenek bölümünün arka planı – tamamen siyah */
-.skills-section{
-  background-color: #050608;
-  padding: 4rem 0 5rem;
+/* Küçük ekranlarda başlığı küçült */
+@media (max-width: 900px){
+  .hero-content h1{
+    font-size: 2.6rem;
+    letter-spacing: 0.25em;
+  }
 }
 
-/* Kartları ortalamak için container */
+/* ---------------- YETENEK KARTLARI ---------------- */
+
+/* Yetenek bölümünün arka planı */
+.skills-section{
+  background-color: #050608;
+  padding: 5rem 0 5.5rem;
+}
+
+/* Kartları ortalamak için kapsayıcı */
 .skills-wrapper{
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;           /* Küçük ekranda alta geçsin */
+  flex-wrap: wrap;           
   justify-content: space-between;
   gap: 2rem;
 }
@@ -111,7 +136,7 @@ body{
 /* Tek bir yetenek kartı */
 .skill-card{
   background: linear-gradient(to bottom, #fdfdfd, #e9edf3);
-  border-radius: 999px 999px 40px 40px; /* Üst kısım oval */
+  border-radius: 999px 999px 40px 40px; 
   width: 190px;
   padding: 3.5rem 1.5rem 2.5rem;
   text-align: center;
@@ -135,6 +160,7 @@ body{
   box-shadow: 0 18px 25px rgba(0,0,0,0.4);
 }
 
+/* Yetenek ikon görseli */
 .skill-icon img{
   width: 80%;
   height: auto;
@@ -158,12 +184,12 @@ body{
   overflow: hidden;
 }
 
-/* Dolu olan kısım – animasyon için başlangıçta 0 genişlik */
+/* Dolu olan kısım – width JS ile ayarlanıyor, transition ile animasyon veriliyor */
 .skill-fill{
   height: 100%;
+  width: 0;                 
   background: linear-gradient(90deg, #2d8bff, #1fc3ff);
-  width: 0%;                /* JS ile % değere kadar genişleyecek */
-  transition: width 1.2s ease-out; /* Animasyon efekti */
+  transition: width 1.4s ease-out;
 }
 
 /* Yüzde yazısı */
@@ -174,35 +200,158 @@ body{
   color: #17212b;
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-
+/* Küçük ekran için kart genişliği */
 @media (max-width: 900px){
-  .hero-content h1{
-    font-size: 2.4rem;
-    letter-spacing: 0.25em;
-  }
-
   .skills-wrapper{
     justify-content: center;
   }
 
-  .nav-inner{
-    gap: 26px;
-    padding: 8px 28px;
-  }
-
-  .nav-inner a{
-    font-size: 12px;
+  .skill-card{
+    width: 170px;
+    padding-inline: 1.2rem;
   }
 }
 
-@media (max-width: 600px){
-  .hero{
-    height: 55vh;
+/* ================= ABOUT BÖLÜMÜ ================= */
+
+/* Tüm about alanı – siyah arka plan, taşmaları kesmek için overflow:hidden */
+.about-section{
+  background-color: #050608;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+}
+
+/* ABOUT ME başlığı */
+.about-title{
+  text-align: center;
+  font-size: 3.8rem;
+  letter-spacing: 0.25em;
+  color: #ffffff;
+  margin-bottom: 3.5rem;
+  font-weight: 700;
+}
+
+/* İçerik: solda foto, sağda yazı */
+.about-inner{
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+/* Foto kapsayıcı */
+.about-photo{
+  position: relative;
+  width: 380px;
+  height: 380px;
+  flex-shrink: 0;
+}
+
+/* Beyaz daire arka plan */
+.about-photo-circle{
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+/* Gerçek fotoğraf – dairenin dışına taşacak şekilde ayarlandı */
+.about-photo img{
+  position: absolute;
+  left: 50%;
+  bottom: -85px;
+  transform: translateX(-50%);
+  width: 680px;
+  height: 800px;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+/* Yazı kısmı */
+.about-text{
+  color: #f9fafb;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.about-text p + p{
+  margin-top: 1.4rem;
+}
+
+/* About bölümünün giriş animasyonu */
+.about-section{
+  opacity: 0;
+  transform: translateY(40px);
+  animation: aboutFadeIn 0.9s ease-out 0.2s forwards;
+}
+
+/* About için keyframe tanımı */
+@keyframes aboutFadeIn{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobil düzen */
+@media (max-width: 900px){
+  .about-inner{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .skill-card{
-    width: 160px;
-    padding-inline: 1.2rem;
+  .about-photo{
+    margin-bottom: 2rem;
   }
+
+  .about-text{
+    max-width: 90%;
+  }
+}
+
+/* ---------------- PLACEHOLDER BÖLÜMLER ---------------- */
+
+.placeholder-section{
+  background-color: #050608;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.placeholder-section h2{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------------- FADE / TRANSITION ANİMASYONLARI ---------------- */
+
+/* Genel fade-in başlangıç hali: görünmez ve hafif aşağıda */
+.fade-item{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Eleman görünür olduğunda eklenecek sınıf */
+.fade-item.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Küçük gecikmeler için yardımcı sınıflar */
+.delay-1{
+  transition-delay: 0.15s;
+}
+
+.delay-2{
+  transition-delay: 0.3s;
+}
+
+.delay-3{
+  transition-delay: 0.45s;
+}
+
+.delay-4{
+  transition-delay: 0.6s;
 }
