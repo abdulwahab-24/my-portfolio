@@ -11,6 +11,42 @@ body{
   color: #f9fafb;
 }
 
+/* ---------------- ÜST MENÜ ---------------- */
+
+/* Üst menünün sayfanın tepesinde ortalanması */
+.main-nav{
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 5; /* hero'nun üstünde görünmesi için */
+}
+
+/* Menünün içindeki beyaz kapsül */
+.nav-inner{
+  background-color: #ffffff;
+  border-radius: 999px;
+  padding: 10px 50px;
+  display: flex;
+  gap: 60px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* Menü linkleri */
+.nav-inner a{
+  text-decoration: none;
+  color: #222222;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-size: 14px;
+}
+
+.nav-inner a:hover{
+  color: #148f77;
+}
+
 /* ---------------- HERO BÖLÜMÜ ---------------- */
 
 /* Arka planda deniz fotoğrafı olan bölüm */
@@ -122,10 +158,12 @@ body{
   overflow: hidden;
 }
 
-/* Dolu olan kısım – width inline style ile kontrol ediliyor */
+/* Dolu olan kısım – animasyon için başlangıçta 0 genişlik */
 .skill-fill{
   height: 100%;
   background: linear-gradient(90deg, #2d8bff, #1fc3ff);
+  width: 0%;                /* JS ile % değere kadar genişleyecek */
+  transition: width 1.2s ease-out; /* Animasyon efekti */
 }
 
 /* Yüzde yazısı */
@@ -146,6 +184,15 @@ body{
 
   .skills-wrapper{
     justify-content: center;
+  }
+
+  .nav-inner{
+    gap: 26px;
+    padding: 8px 28px;
+  }
+
+  .nav-inner a{
+    font-size: 12px;
   }
 }
 

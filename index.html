@@ -7,8 +7,18 @@
 </head>
 <body>
 
+  <!-- Üst menü: Sayfa bölümlerine hızlı erişim -->
+  <header class="main-nav">
+    <nav class="nav-inner">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT ME</a>
+      <a href="#projects">MY PROJECTS</a>
+      <a href="#contact">CONTACT ME</a>
+    </nav>
+  </header>
+
   <!-- Üst kısım: Arka planda deniz fotoğrafı, önde isim ve unvan -->
-  <header class="hero">
+  <header class="hero" id="home">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>ABDULWAHAB</h1>
@@ -17,7 +27,7 @@
   </header>
 
   <!-- Yetenek kartları bölümü -->
-  <section class="skills-section">
+  <section class="skills-section" id="skills">
     <div class="skills-wrapper">
 
       <!-- Fotoğrafçılık 60% -->
@@ -27,7 +37,8 @@
         </div>
         <h3>PHOTOGRAPHY</h3>
         <div class="skill-bar">
-          <div class="skill-fill" style="width:60%;"></div>
+          <!-- hedef yüzde data-percent içinde, animasyonla dolacak -->
+          <div class="skill-fill" data-percent="60"></div>
         </div>
         <span class="skill-percent">60%</span>
       </article>
@@ -39,7 +50,7 @@
         </div>
         <h3>LIGHTROOM</h3>
         <div class="skill-bar">
-          <div class="skill-fill" style="width:50%;"></div>
+          <div class="skill-fill" data-percent="50"></div>
         </div>
         <span class="skill-percent">50%</span>
       </article>
@@ -51,7 +62,7 @@
         </div>
         <h3>PHOTOSHOP</h3>
         <div class="skill-bar">
-          <div class="skill-fill" style="width:30%;"></div>
+          <div class="skill-fill" data-percent="30"></div>
         </div>
         <span class="skill-percent">30%</span>
       </article>
@@ -63,7 +74,7 @@
         </div>
         <h3>ILLUSTRATOR</h3>
         <div class="skill-bar">
-          <div class="skill-fill" style="width:70%;"></div>
+          <div class="skill-fill" data-percent="70"></div>
         </div>
         <span class="skill-percent">70%</span>
       </article>
@@ -75,7 +86,7 @@
         </div>
         <h3>UI / UX</h3>
         <div class="skill-bar">
-          <div class="skill-fill" style="width:30%;"></div>
+          <div class="skill-fill" data-percent="30"></div>
         </div>
         <span class="skill-percent">30%</span>
       </article>
@@ -83,5 +94,12 @@
     </div>
   </section>
 
+  <!-- İleride ABOUT / PROJECTS / CONTACT bölümleri buraya eklenecek -->
+  <section id="about"></section>
+  <section id="projects"></section>
+  <section id="contact"></section>
+
+  <!-- Yüzde animasyonu için JS dosyası -->
+  <script src="app.js"></script>
 </body>
 </html>
