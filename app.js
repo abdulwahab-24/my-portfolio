@@ -64,3 +64,44 @@ document.addEventListener("DOMContentLoaded", () => {
   fadeItems.forEach(item => fadeObserver.observe(item));
 
 });
+
+// ---------------- YETENEK BARI ANİMASYONU ----------------
+document.addEventListener("DOMContentLoaded", () => {
+  const skillFills = document.querySelectorAll(".skill-fill");
+
+  const skillsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        if (bar.dataset.animated === "true") return;
+
+        const targetPercent = bar.dataset.percent;
+        bar.style.width = targetPercent + "%";
+        bar.dataset.animated = "true";
+        observer.unobserve(bar);
+      }
+    });
+  }, {
+    threshold: 0.4
+  });
+
+  skillFills.forEach(bar => skillsObserver.observe(bar));
+
+  // ---------------- FADE ANİMASYONLARI ----------------
+  const fadeItems = document.querySelectorAll(".fade-item");
+
+  const fadeObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  fadeItems.forEach(item => fadeObserver.observe(item));
+});
+
+

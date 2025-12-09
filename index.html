@@ -134,11 +134,76 @@
     </div>
   </section>
 
-  <!-- PROJE BÖLÜMÜ (Placeholder) -->
-  <section id="projects" class="placeholder-section">
-    <h2>MY PROJECTS</h2>
-    <p>Bu bölüm daha sonra eklenecek.</p>
+    <!-- PROJELER BÖLÜMÜ -->
+  <section id="projects" class="projects-section">
+    <h2 class="projects-title fade-item">MY PROJECTS</h2>
+
+    <div class="projects-grid">
+
+      <!-- Proje 1 – Galeri ikonu (telefon galerisi tarzı) -->
+      <button
+        type="button"
+        class="project-card fade-item"
+        data-image="images/gal.png"     
+        data-title="Gallery Icon"
+      >
+        <div class="project-thumb">
+          <img src="images/gal.png" alt="Gallery Icon" />
+        </div>
+        <span class="project-name">GALLERY</span>
+      </button>
+
+      <!-- Proje 2 – Alhayah logosu -->
+      <button
+        type="button"
+        class="project-card fade-item"
+        data-image="images/haya.png"    
+        data-title="Alhayah Brand"
+      >
+        <div class="project-thumb">
+          <img src="images/haya.png" alt="Alhayah Logo" />
+        </div>
+        <span class="project-name">ALHAYAH</span>
+      </button>
+
+      <!-- Proje 3 – Zat logosu -->
+      <button
+        type="button"
+        class="project-card fade-item"
+        data-image="images/dhat.png"    
+        data-title="Dhat Brand"
+      >
+        <div class="project-thumb">
+          <img src="images\شعار ذات والالوان.png" alt="Dhat Logo" />
+        </div>
+        <span class="project-name">DHAT</span>
+      </button>
+
+      <!-- Proje 4 – Leaf / Artboard2 logosu -->
+      <button
+        type="button"
+        class="project-card fade-item"
+        data-image="images/Artboard2.png"  
+        data-title="Leaf Mark"
+      >
+        <div class="project-thumb">
+          <img src="images\Artboard 2.png" alt="Leaf Logo" />
+        </div>
+        <span class="project-name">Sweet 54</span>
+      </button>
+
+    </div>
   </section>
+
+  <!-- PROJE LIGHTBOX (POPUP) -->
+  <div class="project-lightbox" id="projectLightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" aria-label="Kapat">&times;</button>
+      <img src="" alt="" class="lightbox-image" />
+      <p class="lightbox-caption"></p>
+    </div>
+  </div>
+
 
   <!-- İLETİŞİM BÖLÜMÜ (Placeholder) -->
   <section id="contact" class="placeholder-section">
