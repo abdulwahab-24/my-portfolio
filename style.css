@@ -7,6 +7,10 @@
   padding: 0;
 }
 
+html{
+  scroll-behavior: smooth; /* Menü linklerine yumuşak kaydırma efekti */
+}
+
 body{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: #050608;   /* Sayfanın ana arka plan rengi (siyah) */
@@ -30,27 +34,58 @@ a{
   display: flex;
   justify-content: center;
   z-index: 100;
+  pointer-events: none; /* Sadece kapsül tıklanabilir olsun diye */
 }
 
 /* Menü içinde beyaz kapsül görünümü */
 .nav-inner{
-  background-color: #ffffff;
+  pointer-events: auto;
+  background-color: rgba(255,255,255,0.96);
   padding: 10px 40px;
   border-radius: 999px;
   display: flex;
   gap: 80px;
   font-size: 1rem;
   letter-spacing: 0.12em;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover'da hafif yukarı kalkma efekti */
+.nav-inner:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.55);
 }
 
 /* Menü linklerinin rengi ve hover efekti */
 .nav-inner a{
+  position: relative;
   color: #111827;
   font-weight: 500;
+  padding-bottom: 2px;
+}
+
+/* Alt çizgi animasyonu */
+.nav-inner a::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg,#2563eb,#38bdf8);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  transition: width 0.25s ease-out;
 }
 
 .nav-inner a:hover{
   color: #2563eb;
+}
+
+.nav-inner a:hover::after{
+  width: 60%;
 }
 
 /* Küçük ekranlarda menüyü daha sıkı göster */
@@ -75,13 +110,14 @@ a{
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
 }
 
 /* Fotoğraf üzerine koyu overlay – yazının okunabilirliğini artırır */
 .hero-overlay{
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: radial-gradient(circle at top, rgba(15,23,42,0.1), rgba(0,0,0,0.75));
 }
 
 /* Hero metin kutusu */
@@ -89,6 +125,19 @@ a{
   position: relative;   /* overlay'in üstünde görünmesi için */
   z-index: 1;
   margin-top: 40px;     /* Navbar ile çakışmaması için boşluk */
+  animation: heroFadeIn 1s ease-out forwards;
+}
+
+/* Hero başlık ve alt metin için animasyon */
+@keyframes heroFadeIn{
+  from{
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .hero-content h1{
@@ -135,13 +184,22 @@ a{
 
 /* Tek bir yetenek kartı */
 .skill-card{
-  background: linear-gradient(to bottom, #fdfdfd, #e9edf3);
+  background: radial-gradient(circle at top, #ffffff, #e4e8f1);
   border-radius: 999px 999px 40px 40px; 
   width: 190px;
   padding: 3.5rem 1.5rem 2.5rem;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.45);
   position: relative;
+  transform-origin: center bottom;
+  transition: transform 0.35s cubic-bezier(0.22,0.61,0.36,1),
+              box-shadow 0.35s ease;
+}
+
+/* Hover'da kart animasyonu */
+.skill-card:hover{
+  transform: translateY(-14px) scale(1.03);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.6);
 }
 
 /* Üstteki ikon kutusu */
@@ -153,11 +211,11 @@ a{
   width: 120px;
   height: 120px;
   border-radius: 32px;
-  background: #1f2c35;
+  background: radial-gradient(circle at top, #1f2c35, #020617);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 18px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 18px 25px rgba(0,0,0,0.55);
 }
 
 /* Yetenek ikon görseli */
@@ -266,6 +324,7 @@ a{
   height: 800px;
   object-fit: cover;
   border-radius: 999px;
+  filter: drop-shadow(0 25px 45px rgba(0,0,0,0.75));
 }
 
 /* Yazı kısmı */
@@ -356,8 +415,6 @@ a{
   transition-delay: 0.6s;
 }
 
-
-
 /* ================ PROJECTS (MY PROJECTS) ================ */
 
 /* Projeler bölümü arka plan ve boşluklar */
@@ -366,7 +423,7 @@ a{
   padding: 5rem 0 5rem;
 }
 
-/* Başlık stilı */
+/* Başlık stili */
 .projects-title{
   text-align: center;
   font-size: 3.2rem;
@@ -386,13 +443,12 @@ a{
   gap: 2.5rem;
 }
 
-/* Tek proje kartı (buton olarak) */
+/* Tek proje kartı (link olarak kullanılan kart) */
 .project-card{
   background: #ffffff;
   border-radius: 46px;
   width: 230px;
   height: 230px;
-  border: none;
   cursor: pointer;
   padding: 1.5rem 1.5rem 1rem;
   display: flex;
@@ -400,14 +456,16 @@ a{
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+  transform-origin: center bottom;
   transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
-              box-shadow 0.4s ease;
+              box-shadow 0.4s ease, background 0.4s ease;
 }
 
 /* Hover'da hafif yükselme ve scale efekti */
 .project-card:hover{
   transform: translateY(-12px) scale(1.03);
   box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  background: radial-gradient(circle at top, #ffffff, #e5ecf7);
 }
 
 /* Logo için kare alan */
@@ -426,6 +484,12 @@ a{
   max-width: 90%;
   max-height: 90%;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Hover'da logonun hafif zoom efekti */
+.project-card:hover .project-thumb img{
+  transform: scale(1.06);
 }
 
 /* Proje ismi */
@@ -482,6 +546,19 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: modalPop 0.4s ease-out;
+}
+
+/* Modal açılış animasyonu */
+@keyframes modalPop{
+  from{
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Popup içindeki büyük görsel */

@@ -1,0 +1,275 @@
+/* ================= ALHAYAH SAYFASI GENEL ================= */
+
+/* Sadece bu sayfaya özel ana alan */
+.alhayah-page{
+  min-height: 100vh;
+  padding-top: 120px;          /* Sabit navbar için üst boşluk */
+  background-color: #050608;   /* Portföy ile aynı siyah arka plan */
+  color: hsl(221, 39%, 11%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ================= ÜST BÖLÜM (LOGO + BARDAKLAR + RENKLER) ================= */
+
+.alhayah-hero-section{
+  background: #f4f4f4;         /* Üst kısım beyaz / açık gri */
+  padding: 4rem 6rem 3rem;
+}
+
+.alhayah-hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 0.6fr; /* sol–orta–sağ oranları */
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Sol sütun: kahve bardak mockup */
+.alhayah-hero-cups img{
+  width: 100%;                 /* Genişliği konteynıra yay */
+  max-width: 420px;            /* Bardakları biraz büyüttük */
+  display: block;
+  margin-left: auto;
+  filter: drop-shadow(0 18px 35px rgba(0,0,0,0.35));
+  opacity: 0;                  /* İlk durumda görünmez */
+  animation:
+    fadeInSoft 0.8s ease-out 0.1s forwards,   /* Yumuşak giriş */
+    cupsFloat 6s ease-in-out 1s infinite;     /* Hafif yukarı-aşağı hareket */
+}
+
+/* Orta sütun: logo */
+.alhayah-hero-logo{
+  text-align: center;
+}
+
+.alhayah-hero-logo img{
+  max-width: 650px;            /* Logoyu büyüttük */
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.25));
+  opacity: 0;                  /* Giriş animasyonu için */
+  transform: translateY(32px);
+  animation: heroFadeUp 0.9s ease-out 0.25s forwards;
+}
+
+.alhayah-hero-subtitle{
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b7280;
+  opacity: 0;
+  transform: translateY(26px);
+  animation: heroFadeUp 0.8s ease-out 0.4s forwards;
+}
+
+/* Sağ sütun: renk paleti */
+.alhayah-hero-colors{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 0.9s ease-out 0.45s forwards;
+}
+
+/* Renk dairelerinin genel stili */
+.color-circle{
+  width: 130px;                /* Biraz daha büyük renk dairesi */
+  height: 130px;
+  border-radius: 999px;
+  box-shadow: 0 16px 30px rgba(0,0,0,0.25);
+  transform: scale(0.94);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Hover: hafif büyütme */
+.color-circle:hover{
+  transform: scale(1.02);
+  box-shadow: 0 22px 40px rgba(0,0,0,0.35);
+}
+
+/* Marka ana rengi (turuncu) */
+.color-main{
+  background-color: #C57C2D;
+}
+
+/* Açık renk (beyaz / krem) */
+.color-light{
+  background-color: #ffffff;
+}
+
+/* Koyu yeşil (arka plandaki renk) */
+.color-dark{
+  background-color: #5F7453;
+}
+
+/* ================= ALT BÖLÜM (MOCKUP GÖRSELLERİ) ================= */
+
+.alhayah-showcase-section{
+  background-color: #5F7453;   /* Marka yeşili */
+  padding: 4rem 3rem 4.5rem;
+}
+
+.alhayah-showcase-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #dcd6c9;   /* İç panel için sıcak açık ton */
+  border-radius: 48px;
+  padding: 3rem 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 2.5rem;
+}
+
+/* Ortak mockup kutusu */
+.alhayah-shot{
+  border-radius: 32px;
+  overflow: hidden;
+  background: #f5f1e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 26px 55px rgba(0,0,0,0.45);
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  animation: showcaseIn 0.9s ease-out 0.55s forwards;
+}
+
+/* Sağdaki mockup biraz gecikmeli girsin */
+.right-shot{
+  background-color: #f7f2e6;
+  animation-delay: 0.75s;
+}
+
+/* Sol mockup için ton */
+.left-shot{
+  background-color: #f3eee3;
+}
+
+/* Görsellerin davranışı */
+.alhayah-shot img{
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+              filter 0.9s ease;
+}
+
+/* Hover'da hafif yakınlaşma ve kontrast artışı */
+.alhayah-shot:hover img{
+  transform: scale(1.04) translateY(-4px);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* ================= ANİMASYONLAR ================= */
+
+/* Kahve bardaklarının hafif yukarı-aşağı hareketi */
+@keyframes cupsFloat{
+  0%   { transform: translateY(0px) rotate(-4deg); }
+  50%  { transform: translateY(-14px) rotate(-2deg); }
+  100% { transform: translateY(0px) rotate(-4deg); }
+}
+
+/* Hero elemanları için yukarıdan yumuşak giriş */
+@keyframes heroFadeUp{
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bardaklar için sadece opaklık animasyonu */
+@keyframes fadeInSoft{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+
+/* Mockup kutuları için giriş animasyonu */
+@keyframes showcaseIn{
+  from{
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Küçük ekran (tablet ve altı) uyarlaması */
+@media (max-width: 1024px){
+
+  .alhayah-hero-section{
+    padding: 4rem 2rem 3rem;
+  }
+
+  .alhayah-hero-inner{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .alhayah-hero-cups{
+    order: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .alhayah-hero-cups img{
+    margin-left: 0;
+    max-width: 360px;          /* Tablet için biraz küçült */
+  }
+
+  .alhayah-hero-logo{
+    order: 1;
+  }
+
+  .alhayah-hero-colors{
+    order: 3;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .color-circle{
+    width: 90px;
+    height: 90px;
+  }
+
+  .alhayah-showcase-section{
+    padding: 3rem 1.6rem 3.5rem;
+  }
+
+  .alhayah-showcase-inner{
+    padding: 2.4rem 2rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Daha küçük ekranlar için ekstra küçültme */
+@media (max-width: 600px){
+  .alhayah-hero-subtitle{
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+  }
+
+  .alhayah-hero-section{
+    padding: 3.2rem 1.4rem 2.5rem;
+  }
+
+  .alhayah-showcase-inner{
+    padding: 2rem 1.4rem;
+    border-radius: 32px;
+  }
+
+  .alhayah-hero-logo img{
+    max-width: 480px;
+  }
+}
