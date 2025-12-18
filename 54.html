@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SWEET 54 — Brand Identity</title>
+  <link rel="stylesheet" href="54.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="main-nav">
+    <nav class="nav-inner">
+      <a href="index.html#home">HOME</a>
+      <a href="index.html#about">ABOUT ME</a>
+      <a href="index.html#projects">MY PROJECTS</a>
+      <a href="index.html#contact">CONTACT ME</a>
+    </nav>
+  </header>
+
+  <main class="s54-page">
+
+    <!-- HERO -->
+    <section class="s54-hero" id="top">
+      <div class="s54-wrap hero-grid">
+
+        <div class="hero-copy reveal">
+          <p class="kicker">BRANDING · VISUAL IDENTITY</p>
+          <h1 class="title">SWEET 54</h1>
+
+          <p class="desc">
+            Sweet 54, premium ve sıcak bir kimlik diliyle güçlü bir marka imzası sunar.
+            Altın tonlar kalite hissini artırırken, koyu tonlar kontrast ve ciddiyet kazandırır.
+          </p>
+
+          <div class="cta-row reveal delay-1">
+            <a class="btn" href="#showcase">Mockups</a>
+            <a class="btn ghost" href="#palette">Palette</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: mockup + bee -->
+        <div class="hero-right reveal delay-1">
+          <div class="hero-bee" data-float>
+            <img src="images/t.png" alt="Bee icon" />
+          </div>
+
+          <div class="hero-card" data-tilt>
+            <img src="images/mokup.png" alt="Sweet54 Mockup" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PALETTE + PATTERN -->
+    <section class="s54-section" id="palette">
+      <div class="s54-wrap palette-grid">
+
+        <div class="palette-left reveal">
+          <h2>RENK PALETİ</h2>
+          <p>
+            Bal/altın tonlar tatlı hissini ve premium algıyı güçlendirir.
+            Koyu tonlar markaya ağırlık verir, açık tonlar okunabilirlik sağlar.
+          </p>
+
+          <div class="swatches">
+            <div class="swatch" style="--c:#1a120e"><span>#1A120E</span></div>
+            <div class="swatch" style="--c:#5a341f"><span>#5A341F</span></div>
+            <div class="swatch" style="--c:#c88a2a"><span>#C88A2A</span></div>
+            <div class="swatch" style="--c:#f2e7d7"><span>#F2E7D7</span></div>
+          </div>
+        </div>
+
+        <div class="pattern-card reveal delay-1" data-tilt>
+          <div class="pattern-top">
+            <img src="images/pat.png" alt="Sweet54 Pattern" />
+          </div>
+          <div class="pattern-bottom">
+            <h3>PATTERN / DOKU</h3>
+            <p>
+              Tekrarlayan desen; ambalaj, kartvizit ve sosyal medya görsellerinde
+              markayı hızlıca tanıtan bir imza görevi görür.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section class="s54-section" id="showcase">
+      <div class="s54-wrap">
+        <div class="section-head reveal">
+          <h2>MOCKUP GALERİ</h2>
+          <p>Görselleri büyütmek için tıkla.</p>
+        </div>
+
+        <div class="show-grid">
+          <button class="shot reveal" data-full="images/Artboard 2.png" aria-label="Open image">
+            <img src="images/Artboard 2.png" alt="Sweet54 Logo" />
+          </button>
+
+          <button class="shot reveal delay-1" data-full="images/mokup.png" aria-label="Open image">
+            <img src="images/mokup.png" alt="Sweet54 Mockup" />
+          </button>
+
+          <!-- إذا عندك صورة ثانية غير bakery: غيّر الاسم هنا -->
+          <button class="shot reveal delay-2" data-full="images/BAKERY BRANDING MOCKUP.png" aria-label="Open image">
+            <img src="images/2.png" alt="Sweet54 Showcase" />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-inner" role="dialog" aria-modal="true">
+        <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+        <img id="lbImg" class="lb-img" alt="" />
+      </div>
+    </div>
+
+  </main>
+
+  <script src="54.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DHAT – Brand Page</title>
+  <link rel="stylesheet" href="dhat.css" />
+</head>
+<body>
+
+  <!-- Üst navbar (istersen style.css ile aynı bırak) -->
+  <header class="main-nav">
+    <nav class="nav-inner">
+      <a href="index.html#home">HOME</a>
+      <a href="index.html#about">ABOUT ME</a>
+      <a href="index.html#projects">MY PROJECTS</a>
+      <a href="index.html#contact">CONTACT ME</a>
+    </nav>
+  </header>
+
+  <main class="dhat-page">
+
+    <!-- Dalgalı arka plan + kartlar -->
+    <section class="dhat-hero">
+      <div class="dhat-container">
+
+        <!-- 3 kart -->
+        <div class="dhat-cards reveal-stagger">
+
+          <!-- Kart 1 -->
+          <article class="dhat-card is-cream">
+            <img class="dhat-logo" src="images/شعار ذات والالوان.png" alt="DHAT Cream Logo">
+          </article>
+
+          <!-- Kart 2 -->
+          <article class="dhat-card is-dark">
+            <img class="dhat-logo" src="images/شعار ذات والالوان.png" alt="DHAT Dark Logo">
+          </article>
+
+          <!-- Kart 3 -->
+          <article class="dhat-card is-orange">
+            <img class="dhat-logo" src="images/شعار ذات والالوان 2.png" alt="DHAT Orange Logo">
+          </article>
+
+        </div>
+
+        <!-- Palette alanı (alt kısım) -->
+        <section class="dhat-palette reveal-up">
+          <div class="pill is-tall" data-delay="0"></div>
+          <div class="pill is-tall is-orange" data-delay="80"></div>
+          <div class="pill is-tall is-dark" data-delay="160"></div>
+          <div class="pill is-tall is-orange2" data-delay="240"></div>
+          <div class="pill is-tall is-dark2" data-delay="320"></div>
+          <div class="pill is-tall is-cream2" data-delay="400"></div>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="dhat.js"></script>
+</body>
+</html>

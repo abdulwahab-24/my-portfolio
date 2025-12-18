@@ -1,0 +1,286 @@
+/* ================== GENEL ================== */
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+:root{
+  --bg: #050608;
+  --cream: #EEE7E1;
+  --dark: #1A1C1E;
+  --orange: #F05B49; /* قريب من لون الصورة */
+  --wave: rgba(255,255,255,0.7);
+}
+
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: #f9fafb;
+}
+
+/* Navbar (نفس أسلوبك) */
+.main-nav{
+  position: fixed;
+  top: 16px;
+  left: 0;
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  z-index: 50;
+}
+.nav-inner{
+  background:#fff;
+  padding:10px 40px;
+  border-radius:999px;
+  display:flex;
+  gap:70px;
+  font-size: 0.95rem;
+  letter-spacing: .12em;
+}
+.nav-inner a{ color:#111827; text-decoration:none; font-weight:500; }
+.nav-inner a:hover{ color:#2563eb; }
+
+@media (max-width: 850px){
+  .nav-inner{ gap:18px; padding-inline:22px; font-size:.82rem; }
+}
+
+/* ================== SAYFA ================== */
+.dhat-page{
+  min-height: 100vh;
+  padding-top: 110px; /* navbar boşluğu */
+}
+
+/* ================== HERO (WAVE BACKGROUND) ================== */
+.dhat-hero{
+  position: relative;
+  padding: 38px 0 70px;
+  overflow:hidden;
+}
+
+/* Dalga efekti: pseudo element ile */
+.dhat-hero::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 600px at 50% 10%, rgba(255,255,255,0.05), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 38px,
+      rgba(255,255,255,0.06) 38px 39px
+    );
+  opacity: 0.7;
+  z-index:0;
+}
+
+/* موج مرسوم بخطوط */
+.dhat-hero::after{
+  content:"";
+  position:absolute;
+  inset:-40px 0 -40px 0;
+  background-image:
+    radial-gradient(circle at 0 50%, transparent 18px, transparent 18px),
+    radial-gradient(circle at 0 50%, transparent 18px, transparent 18px);
+  z-index:0;
+}
+
+/* طريقة موج: svg background (CSS فقط) */
+.dhat-container{
+  position:relative;
+  z-index:1;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* خلفية موج “حقيقية” (مظهر مثل الصورة) */
+.dhat-hero{
+  background:
+    linear-gradient(#000, #000),
+    repeating-linear-gradient(0deg, transparent 0 44px, transparent 44px 44px);
+}
+.dhat-hero .dhat-container{
+  position: relative;
+}
+.dhat-hero .dhat-container::before{
+  content:"";
+  position:absolute;
+  inset:-10px -20px -10px -20px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='200' viewBox='0 0 1200 200'%3E%3Cpath d='M0 60 C 120 10, 240 110, 360 60 S 600 110, 720 60 S 960 110, 1200 60' fill='none' stroke='rgba(255,255,255,0.75)' stroke-width='2'/%3E%3Cpath d='M0 140 C 120 90, 240 190, 360 140 S 600 190, 720 140 S 960 190, 1200 140' fill='none' stroke='rgba(255,255,255,0.55)' stroke-width='2'/%3E%3C/svg%3E");
+  background-size: 1200px 200px;
+  background-repeat: repeat;
+  background-position: 0 0;
+  opacity: .9;
+  animation: waveMove 18s linear infinite;
+  pointer-events:none;
+  z-index:-1;
+}
+@keyframes waveMove{
+  from{ background-position: 0 0; }
+  to{ background-position: -1200px 0; }
+}
+
+/* ================== 3 KART ================== */
+.dhat-cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px;
+  align-items:center;
+  margin-top: 10px;
+}
+
+/* Kart görünümü */
+.dhat-card{
+  height: 315px;
+  border-radius: 44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.65);
+  transform: translateY(18px);
+  transition: transform 500ms cubic-bezier(.2,.8,.2,1), box-shadow 500ms ease;
+  position: relative;
+  overflow:hidden;
+}
+
+/* Hafif parlama */
+.dhat-card::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  background: radial-gradient(600px 300px at 20% 15%, rgba(255,255,255,0.10), transparent 55%);
+  opacity: .9;
+}
+
+.dhat-card:hover{
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.75);
+}
+
+/* Kart renkleri */
+.dhat-card.is-cream{ background: var(--cream); }
+.dhat-card.is-dark{ background: var(--dark); }
+.dhat-card.is-orange{ background: var(--orange); }
+
+/* Logo img */
+.dhat-logo{
+  width: min(75%, 320px);
+  height:auto;
+  display:block;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,0.28));
+  transform: translateY(0);
+  animation: logoFloat 6s ease-in-out infinite;
+}
+@keyframes logoFloat{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+  100%{ transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .dhat-cards{ grid-template-columns: 1fr; gap: 22px; }
+  .dhat-card{ height: 260px; }
+  .dhat-logo{ width: min(78%, 300px); }
+}
+
+/* ================== PALETTE PİLLS ================== */
+.dhat-palette{
+  margin-top: 46px;
+  display:flex;
+  justify-content:center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.pill{
+  width: 145px;
+  height: 300px;
+  border-radius: 999px;
+  background: var(--cream);
+  box-shadow: 0 26px 60px rgba(0,0,0,0.55);
+  position: relative;
+  overflow:hidden;
+
+  /* animasyon başlangıcı */
+  opacity: 0;
+  transform: translateY(25px) scale(.98);
+}
+
+/* alt iç “yarım daire” gibi görünüm */
+.pill::after{
+  content:"";
+  position:absolute;
+  left: 0; right: 0;
+  bottom: -40px;
+  margin:auto;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--orange);
+  filter: blur(0px);
+}
+
+/* varyasyonlar */
+.pill.is-orange{ background: var(--orange); }
+.pill.is-orange::after{ background: var(--cream); }
+
+.pill.is-dark{ background: var(--dark); }
+.pill.is-dark::after{ background: var(--orange); }
+
+.pill.is-orange2{ background: var(--orange); }
+.pill.is-orange2::after{ background: var(--dark); }
+
+.pill.is-dark2{ background: var(--dark); }
+.pill.is-dark2::after{ background: var(--cream); }
+
+.pill.is-cream2{ background: var(--cream); }
+.pill.is-cream2::after{ background: var(--dark); }
+
+/* ================== REVEAL ANİMASYONLAR ================== */
+.reveal-stagger .dhat-card{
+  opacity: 0;
+  transform: translateY(28px) scale(.98);
+}
+
+.reveal-stagger.is-visible .dhat-card{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* stagger gecikme */
+.reveal-stagger.is-visible .dhat-card:nth-child(1){ transition-delay: 120ms; }
+.reveal-stagger.is-visible .dhat-card:nth-child(2){ transition-delay: 240ms; }
+.reveal-stagger.is-visible .dhat-card:nth-child(3){ transition-delay: 360ms; }
+
+.reveal-up{
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+.reveal-up.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* pills görünür olduğunda */
+.dhat-palette.is-visible .pill{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+
+/* motion azaltma */
+@media (prefers-reduced-motion: reduce){
+  .dhat-hero .dhat-container::before,
+  .dhat-logo{
+    animation: none !important;
+  }
+  .dhat-card,
+  .pill,
+  .reveal-up,
+  .reveal-stagger .dhat-card{
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
